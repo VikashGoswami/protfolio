@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { Analytics } from '@vercel/analytics/react';
 
 // ─── THEMES ───────────────────────────────────────────────────────────────────
 const THEMES = {
@@ -1174,6 +1175,7 @@ export default function App() {
 
       <Footer t={t} />
       <BackToTop t={t} />
+      <Analytics />
     </div>
   );
 }
