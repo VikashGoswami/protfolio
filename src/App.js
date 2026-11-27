@@ -155,7 +155,7 @@ const PROJECTS = [
 ];
 
 const CERTIFICATIONS = [
-  { title: "Cloud Computing", issuer: "NPTEL (IIT Kharagpur)", year: "2021", icon: "☁️", desc: "Cloud service models (IaaS, PaaS, SaaS), virtualisation, distributed computing, AWS fundamentals." },
+  { title: "Cloud Computing", issuer: "NPTEL", year: "2021", icon: "☁️", desc: "Cloud service models (IaaS, PaaS, SaaS), virtualisation, distributed computing, AWS fundamentals." },
   { title: "AI, ML & Data Science", issuer: "LearnCodeOnline", year: "2019", icon: "🧠", desc: "Supervised/unsupervised learning, data preprocessing, Python for ML, introductory deep learning." },
   { title: "Full Stack Web Development", issuer: "Udemy", year: "2022", icon: "💻", desc: "HTML5, CSS3, JavaScript, React.js, Node.js, REST APIs, MySQL and MongoDB." },
 ];
@@ -355,8 +355,8 @@ function ParticleCanvas({ theme }) {
     const draw = () => {
       ctx.clearRect(0, 0, W, H);
       const isDark = theme === "dark";
-      const rgb = isDark ? "0,212,255" : "0,152,200";
-      const grid = isDark ? "rgba(0,212,255,0.035)" : "rgba(124,58,237,0.035)";
+      const rgb = isDark ? "59,130,246" : "37,99,235";
+      const grid = isDark ? "rgba(59,130,246,0.045)" : "rgba(37,99,235,0.045)";
 
       ctx.strokeStyle = grid; ctx.lineWidth = 1;
       for (let x = 0; x < W; x += 80) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
@@ -406,7 +406,7 @@ function ParticleCanvas({ theme }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
 
-  return <canvas ref={canvasRef} style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 0, opacity: 0.75 }} />;
+  return <canvas ref={canvasRef} style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 9, opacity: 0.65 }} />;
 }
 
 // ─── SUCCESS MODAL ────────────────────────────────────────────────────────────
@@ -562,7 +562,7 @@ function Section({ id, children, t, style = {} }) {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      padding: "96px 0",
+      padding: "68px 0 48px",
       background: isEven ? t.bgSecondary : t.bg,
       borderTop: `1px solid ${t.border}`,
       scrollMarginTop: "64px",
@@ -577,7 +577,7 @@ function Section({ id, children, t, style = {} }) {
 
 function SectionTitle({ label, title, t }) {
   return (
-    <div style={{ textAlign: "center", marginBottom: "64px" }}>
+    <div style={{ textAlign: "center", marginBottom: "40px" }}>
       <span style={{
         display: "inline-block", fontSize: "12px", fontWeight: 600, letterSpacing: "0.2em",
         textTransform: "uppercase", color: t.accent, padding: "6px 16px",
@@ -783,7 +783,6 @@ function Hero({ t }) {
         <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
           {[{ label: "View Projects", primary: true, id: "projects" }, { label: "Contact Me", primary: false, id: "contact" }, { label: "Download Resume", primary: false, href: "/Vikash_Goswami_Resume.pdf", download: "Vikash_Goswami_Resume.pdf" }].map(({ label, primary, id, href, download }) => {
             const commonProps = {
-              key: label,
               style: {
                 padding: "14px 32px", borderRadius: "12px", fontSize: "15px", fontWeight: 600,
                 background: primary ? `linear-gradient(135deg,${t.accent},${t.accentSecondary})` : "transparent",
@@ -795,9 +794,9 @@ function Hero({ t }) {
               onMouseLeave: (e) => { e.currentTarget.style.transform = "translateY(0)"; if (primary) e.currentTarget.style.boxShadow = `0 4px 20px ${t.accentGlow}`; else { e.currentTarget.style.borderColor = t.border; e.currentTarget.style.color = t.text; } }
             };
             if (href) {
-              return <a {...commonProps} href={href} download={download}>{label}</a>;
+              return <a key={label} {...commonProps} href={href} download={download}>{label}</a>;
             }
-            return <button {...commonProps} onClick={() => scrollToSection(id)}>{label}</button>;
+            return <button key={label} {...commonProps} onClick={() => scrollToSection(id)}>{label}</button>;
           })}
         </div>
 
@@ -949,7 +948,7 @@ function Skills({ t }) {
         </div>
         <SectionTitle label="// tech_stack.json" title="Technical Skills" t={t} />
         <CodeTag text="{ skills: 'crafted with precision' }" style={{ top: "-20px", right: "4%" }} t={t} />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: "20px" }}>
+        <div className="skills-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "20px" }}>
           {Object.entries(SKILLS).map(([cat, skills], idx) => (
             <SkillCategory key={cat} cat={cat} skills={skills} idx={idx} active={active} setActive={setActive} t={t} />
           ))}
@@ -1074,8 +1073,8 @@ function Projects({ t }) {
 function CertificationItem({ cert, idx, t }) {
   const [ref, inView] = useInView(0.1);
   return (
-    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0) rotateX(0)" : "translateY(32px) rotateX(15deg)", transition: `all 0.7s cubic-bezier(0.22,1,0.36,1) ${idx * 0.15}s` }}>
-      <Card t={t} style={{ padding: "28px", textAlign: "center" }}>
+    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0) rotateX(0)" : "translateY(32px) rotateX(15deg)", transition: `all 0.7s cubic-bezier(0.22,1,0.36,1) ${idx * 0.15}s`, height: "100%" }}>
+      <Card t={t} style={{ padding: "28px", textAlign: "center", height: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div style={{ width: "68px", height: "68px", borderRadius: "50%", margin: "0 auto 16px", background: `linear-gradient(135deg,${t.accent}22,${t.accentSecondary}22)`, border: `2px solid ${t.accent}44`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "32px" }}>{cert.icon}</div>
         <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "17px", fontWeight: 700, color: t.text, margin: "0 0 6px" }}>{cert.title}</h3>
         <div style={{ color: t.accent, fontSize: "13px", fontWeight: 600, marginBottom: "4px" }}>{cert.issuer}</div>
@@ -1092,7 +1091,7 @@ function Certifications({ t }) {
     <Section id="certifications" t={t} style={{ background: `linear-gradient(180deg,${t.bg},${t.bgSecondary})` }}>
       <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "0 clamp(16px,4vw,48px)" }}>
         <SectionTitle label="// credentials.verify()" title="Certifications & Education" t={t} />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: "24px", marginBottom: "40px" }}>
+        <div className="certs-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "24px", marginBottom: "40px" }}>
           {CERTIFICATIONS.map((cert, idx) => (
             <CertificationItem key={cert.title} cert={cert} idx={idx} t={t} />
           ))}
@@ -1342,14 +1341,14 @@ export default function App() {
         @keyframes fadeIn{from{opacity:0}to{opacity:1}}
         @keyframes popIn{from{opacity:0;transform:scale(0.82)}to{opacity:1;transform:scale(1)}}
         @media(max-width:1024px){
-          .projects-grid-3{grid-template-columns:repeat(2,1fr)!important;}
+          .projects-grid-3,.skills-grid-3,.certs-grid-3{grid-template-columns:repeat(2,1fr)!important;}
         }
         @media(max-width:768px){
           .nav-links{display:none!important;}
           .hamburger{display:block!important;}
           .about-grid{grid-template-columns:1fr!important;}
           .contact-grid{grid-template-columns:1fr!important;}
-          .projects-grid-3{grid-template-columns:1fr!important;}
+          .projects-grid-3,.skills-grid-3,.certs-grid-3{grid-template-columns:1fr!important;}
         }
       `}</style>
 

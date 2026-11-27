@@ -1,71 +1,54 @@
-# Getting Started with Create React App
+# Vikash Goswami — Full Stack Developer Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal portfolio of **Vikash Goswami**, a Laravel & Full Stack Developer (React.js & Next.js) with **4.5+ years** of experience building scalable, production-grade web applications for government, institutional, and AI-powered platforms.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## About the Portfolio Owner
 
-### `npm start`
+- **Name:** Vikash Goswami
+- **Role:** Laravel Developer | Full Stack (React & Next.js)
+- **Location:** Dhanbad, Jharkhand, India (Open to Remote · Immediate Joiner)
+- **Email:** [vgoswami492@gmail.com](mailto:vgoswami492@gmail.com)
+- **Phone:** +91 79790 40859
+- **Portfolio:** [vikash-goswami.vercel.app](https://vikash-goswami.vercel.app)
+- **GitHub:** [github.com/VikashGoswami](https://github.com/VikashGoswami)
+- **LinkedIn:** [linkedin.com/in/vikash-goswami](https://linkedin.com/in/vikash-goswami)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Core Tech Stack
 
-### `npm test`
+- **Languages:** JavaScript, TypeScript, PHP 8.x, HTML5, CSS3, SQL
+- **Frontend:** React.js, Next.js 14, Tailwind CSS, Material UI, shadcn/ui, jQuery, Recharts
+- **Backend & APIs:** Laravel 10/12/13, CodeIgniter, Node.js, REST APIs, MVC / Service-Repository
+- **Auth & Security:** JWT Auth, Laravel Sanctum, RBAC, SMS OTP, OWASP Top 10
+- **Databases:** MySQL, PostgreSQL, SQLite (Indexing, Query Optimisation, Transactions)
+- **Cloud & DevOps:** AWS (EC2, S3, RDS), Docker, CI/CD, GitHub Actions, Git, Linux CLI, Vercel
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Featured Projects
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **TestCraft-AI** — AI-powered online exam & assessment platform that turns uploaded PDFs and images into live timed exams with instant grading, step-by-step AI explanations, and topic-wise analytics. ([Live](https://t-craft-ai-ten.vercel.app/))
+- **JSPC – Paramedical Registration Portal** — State-level certificate & registration management system for Jharkhand's paramedical students with 3-tier RBAC, SMS OTP, and automated PDF certificate issuance. ([Live](https://cgms.jharkhandstateparamedicalcouncil.com))
+- **Sports Booking Platform** — Multi-role sports venue booking platform with Player → Sub-admin → Super-admin workflow, JWT auth, Recharts analytics, and printable entry cards. ([Live](https://pnp.jharkhandcclsports.in))
+- **AI Image Generator** — Generative AI text-to-image web application. ([Live Demo](https://ai-image-generator-red-one.vercel.app/))
+- **SmartDocs – RAG Document Q&A** — Document Q&A system using Amazon Bedrock, OpenSearch Serverless, S3, Laravel 12, and Next.js 14.
+- **IIT ISM Campus MIS** — Campus-wide academic modules including Scholarship Management, Training & Placement REST APIs, and Student Grade Sheet System.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Experience
 
-### `npm run eject`
+- **PHP / Full Stack Developer** — *COMPUTER Ed.* (Ranchi, Remote · Aug 2024 – Jun 2026)
+- **Junior Software Developer** — *IIT (ISM) Dhanbad* (Dhanbad, India · Nov 2021 – Jul 2024)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Education & Certifications
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# protfolio
+- **M.Sc. Computer Science** — ECMT, West Bengal (2021)
+- **Full Stack Web Development** — Udemy (2022)
+- **Cloud Computing** — NPTEL(2021)
+- **AI, ML & Data Science** — LearnCodeOnline (2019)
