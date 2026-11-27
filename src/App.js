@@ -146,7 +146,7 @@ const EXPERIENCE = [
 ];
 
 const PROJECTS = [
-  { name: "TestCraft-AI — AI-Powered Online Exam & Assessment Platform", desc: "An AI-powered assessment platform that turns uploaded PDFs and images into live timed exams with instant grading, step-by-step AI explanations, and topic-wise analytics.", stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Laravel 13", "PHP 8.4", "SQLite", "Google Gemini API", "GitHub Actions"], logo: "/testcraft-logo.png", icon: "📝", url: "https://t-craft-ai-ten.vercel.app/", accentColor: "#6366f1", badge: "AI-Powered · Completed" },
+  { name: "TestCraft-AI — AI-Powered Online Exam & Assessment Platform", desc: "AI-powered assessment platform that digitizes exam papers in seconds, runs proctored CBT tests, and empowers students with AI solutions, shortcuts, and topic analytics.", stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Laravel 13", "PHP 8.4", "SQLite", "Google Gemini API", "GitHub Actions"], logo: "/testcraft-logo.png", icon: "📝", url: "https://t-craft-ai-ten.vercel.app/", accentColor: "#6366f1", badge: "AI-Powered · Completed" },
   { name: "JSPC – Paramedical Registration Portal", desc: "State-level certificate & registration management system for Jharkhand's paramedical students. Features 3-tier RBAC, SMS OTP, race-condition-safe ID generation, and dompdf certificate issuance.", stack: ["Laravel 12", "MySQL", "jQuery", "AJAX", "dompdf"], icon: "🏥", url: "https://cgms.jharkhandstateparamedicalcouncil.com", accentColor: "#00d4ff", badge: null },
   { name: "Sports  Booking Platform", desc: "Full-stack multi-role sports  booking platform. Player → Sub-admin → Super-admin hierarchy with JWT auth, Recharts analytics, accommodation allotment and printable entry cards.", stack: ["Next.js 14", "TypeScript", "Laravel 12", "AWS EC2/S3", "JWT"], icon: "🏟️", url: "https://pnp.jharkhandcclsports.in", accentColor: "#7c3aed", badge: null },
   { name: "AI Image Generator", desc: "AI-powered image generation tool. Enter a text prompt and watch it create stunning images using generative AI in seconds. Live and fully interactive — try it now!", stack: ["OpenAI API", "React.js", "Node.js", "Vercel"], icon: "🎨", url: "https://ai-image-generator-red-one.vercel.app/", accentColor: "#f59e0b", badge: "Live Demo" },
@@ -1032,7 +1032,20 @@ function ProjectItem({ proj, idx, t }) {
             <div style={{ fontSize: "40px", marginBottom: "12px", lineHeight: 1 }}>{proj.icon}</div>
           )}
           <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "16px", fontWeight: 700, color: t.text, margin: 0 }}>{proj.name}</h3>
-          {proj.badge && <span style={{ position: "absolute", top: "14px", right: "14px", padding: "4px 10px", borderRadius: "6px", fontSize: "11px", background: `${proj.accentColor}22`, border: `1px solid ${proj.accentColor}55`, color: proj.accentColor, fontWeight: 700 }}>{proj.badge}</span>}
+          {proj.badge && (
+            <span style={proj.badge.includes("AI-Powered") ? {
+              position: "absolute", top: "14px", right: "14px", padding: "5px 12px", borderRadius: "20px",
+              fontSize: "11px", fontWeight: 700, letterSpacing: "0.03em", color: "#fff",
+              background: `linear-gradient(135deg,${proj.accentColor},#0d9488)`,
+              boxShadow: `0 4px 14px ${proj.accentColor}45`, display: "inline-flex", alignItems: "center", gap: "4px",
+            } : {
+              position: "absolute", top: "14px", right: "14px", padding: "4px 10px", borderRadius: "6px",
+              fontSize: "11px", background: `${proj.accentColor}22`, border: `1px solid ${proj.accentColor}55`,
+              color: proj.accentColor, fontWeight: 700,
+            }}>
+              {proj.badge.includes("AI-Powered") ? `✨ ${proj.badge}` : proj.badge}
+            </span>
+          )}
         </div>
         <div style={{ padding: "20px 24px 24px", flex: 1, display: "flex", flexDirection: "column" }}>
           <p style={{ fontSize: "14px", color: t.textMuted, lineHeight: 1.75, marginBottom: "16px", flex: 1 }}>{proj.desc}</p>
