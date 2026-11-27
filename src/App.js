@@ -3,22 +3,22 @@ import { useState, useEffect, useRef, useCallback } from "react";
 // ─── THEMES ───────────────────────────────────────────────────────────────────
 const THEMES = {
   dark: {
-    bg: "#0a0f1e", bgSecondary: "#0d1529",
-    bgCard: "rgba(255,255,255,0.04)", borderHover: "rgba(0,212,255,0.45)",
-    border: "rgba(0,212,255,0.13)", text: "#e8eaf6", textMuted: "#7986cb", textDim: "#4a5568",
-    accent: "#00d4ff", accentSecondary: "#7c3aed", accentGlow: "rgba(0,212,255,0.22)",
-    navBg: "rgba(10,15,30,0.88)", tagBg: "rgba(0,212,255,0.08)",
-    gradHero: "linear-gradient(135deg,#0a0f1e 0%,#0d1a3a 50%,#0a0f1e 100%)",
+    bg: "#090d16", bgSecondary: "#0f172a",
+    bgCard: "rgba(255,255,255,0.04)", borderHover: "rgba(59,130,246,0.48)",
+    border: "rgba(59,130,246,0.16)", text: "#f1f5f9", textMuted: "#94a3b8", textDim: "#64748b",
+    accent: "#3b82f6", accentSecondary: "#f97316", accentGlow: "rgba(59,130,246,0.24)",
+    navBg: "rgba(9,13,22,0.88)", tagBg: "rgba(59,130,246,0.09)",
+    gradHero: "linear-gradient(135deg,#090d16 0%,#111c33 50%,#090d16 100%)",
     inputBg: "rgba(255,255,255,0.05)",
   },
   light: {
-    bg: "#f0f4ff", bgSecondary: "#e8eeff",
-    bgCard: "rgba(255,255,255,0.88)", borderHover: "rgba(0,152,200,0.55)",
-    border: "rgba(124,58,237,0.14)", text: "#1a1f3c", textMuted: "#5c6bc0", textDim: "#94a3b8",
-    accent: "#0098c8", accentSecondary: "#7c3aed", accentGlow: "rgba(0,152,200,0.18)",
-    navBg: "rgba(240,244,255,0.92)", tagBg: "rgba(124,58,237,0.08)",
-    gradHero: "linear-gradient(135deg,#e8eeff 0%,#f0f4ff 50%,#ede9fe 100%)",
-    inputBg: "rgba(255,255,255,0.9)",
+    bg: "#f8fafc", bgSecondary: "#eff6ff",
+    bgCard: "rgba(255,255,255,0.92)", borderHover: "rgba(37,99,235,0.55)",
+    border: "rgba(37,99,235,0.16)", text: "#0f172a", textMuted: "#475569", textDim: "#94a3b8",
+    accent: "#2563eb", accentSecondary: "#ea580c", accentGlow: "rgba(37,99,235,0.18)",
+    navBg: "rgba(248,250,252,0.92)", tagBg: "rgba(37,99,235,0.08)",
+    gradHero: "linear-gradient(135deg,#eff6ff 0%,#f8fafc 50%,#fff7ed 100%)",
+    inputBg: "rgba(255,255,255,0.95)",
   },
 };
 
@@ -35,6 +35,56 @@ const SKILLS = {
 const SKILL_ICONS = {
   "Languages": "🔤", "Frontend": "🎨", "Backend & APIs": "⚙️",
   "Auth & Security": "🔐", "Database": "🗄️", "Cloud & DevOps": "☁️", "Tools": "🛠️",
+};
+
+const DEVICON = (name, variant = "original") =>
+  `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${name}/${name}-${variant}.svg`;
+
+const SKILL_LOGOS = {
+  // Languages
+  "JavaScript": { src: DEVICON("javascript") },
+  "TypeScript": { src: DEVICON("typescript") },
+  "PHP": { src: DEVICON("php") },
+  "HTML5": { src: DEVICON("html5") },
+  "CSS3": { src: DEVICON("css3") },
+  "SQL": { src: DEVICON("azuresqldatabase") },
+  // Frontend
+  "React.js": { src: DEVICON("react") },
+  "Next.js 14": { src: DEVICON("nextjs"), darkInvert: true },
+  "Material UI": { src: DEVICON("materialui") },
+  "shadcn/ui": { src: "https://cdn.simpleicons.org/shadcnui", darkInvert: true },
+  "jQuery": { src: DEVICON("jquery") },
+  "Recharts": { emoji: "📊" },
+  // Backend & APIs
+  "Laravel 12": { src: DEVICON("laravel") },
+  "CodeIgniter": { src: DEVICON("codeigniter", "plain") },
+  "Node.js": { src: DEVICON("nodejs") },
+  "REST API": { src: DEVICON("openapi") },
+  "MVC / Service-Repository": { emoji: "🧱" },
+  // Auth & Security
+  "JWT Auth": { src: "https://cdn.simpleicons.org/jsonwebtokens/d63aff" },
+  "RBAC": { emoji: "🛡️" },
+  "SMS OTP": { emoji: "📱" },
+  "Session Management": { emoji: "🔑" },
+  // Database
+  "MySQL": { src: DEVICON("mysql") },
+  "Query Optimisation": { emoji: "⚡" },
+  "Indexing": { emoji: "📑" },
+  "Transactions": { emoji: "🔄" },
+  // Cloud & DevOps
+  "AWS EC2": { src: DEVICON("amazonwebservices", "plain-wordmark"), darkInvert: true },
+  "AWS S3": { src: DEVICON("amazonwebservices", "plain-wordmark"), darkInvert: true },
+  "AWS RDS": { src: DEVICON("amazonwebservices", "plain-wordmark"), darkInvert: true },
+  "CI/CD": { src: DEVICON("githubactions") },
+  "Git": { src: DEVICON("git") },
+  "Linux CLI": { src: DEVICON("linux") },
+  "Docker": { src: DEVICON("docker") },
+  // Tools
+  "VS Code": { src: DEVICON("vscode") },
+  "Postman": { src: DEVICON("postman") },
+  "Composer": { src: DEVICON("composer") },
+  "npm": { src: DEVICON("npm", "original-wordmark") },
+  "Atom Payment Gateway": { emoji: "💳" },
 };
 
 const EXPERIENCE = [
@@ -55,12 +105,12 @@ const EXPERIENCE = [
         ],
       },
       {
-        name: "Sports Venue Booking Platform",
+        name: "Sports  Booking Platform",
         url: "pnp.jharkhandcclsports.in",
         stack: ["Next.js 14", "TypeScript", "Laravel 12", "JWT", "AWS"],
         points: [
           "Architected a full-stack multi-role booking platform: Player → Sub-admin → Super-admin hierarchy.",
-          "Built dynamic admin dashboards with Recharts-based analytics for venue booking trends.",
+          "Built dynamic admin dashboards with Recharts-based analytics for  booking trends.",
           "Implemented JWT authentication and fine-grained RBAC for multi-role workflows.",
           "Engineered accommodation room allotment module with real-time status tracking.",
         ],
@@ -96,8 +146,9 @@ const EXPERIENCE = [
 ];
 
 const PROJECTS = [
+  { name: "TestCraft-AI — AI-Powered Online Exam & Assessment Platform", desc: "An AI-powered assessment platform that turns uploaded PDFs and images into live timed exams with instant grading, step-by-step AI explanations, and topic-wise analytics.", stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Laravel 13", "PHP 8.4", "SQLite", "Google Gemini API", "GitHub Actions"], logo: "/testcraft-logo.png", icon: "📝", url: "https://t-craft-ai-ten.vercel.app/", accentColor: "#6366f1", badge: "AI-Powered · Completed" },
   { name: "JSPC – Paramedical Registration Portal", desc: "State-level certificate & registration management system for Jharkhand's paramedical students. Features 3-tier RBAC, SMS OTP, race-condition-safe ID generation, and dompdf certificate issuance.", stack: ["Laravel 12", "MySQL", "jQuery", "AJAX", "dompdf"], icon: "🏥", url: "https://cgms.jharkhandstateparamedicalcouncil.com", accentColor: "#00d4ff", badge: null },
-  { name: "Sports Venue Booking Platform", desc: "Full-stack multi-role sports venue booking platform. Player → Sub-admin → Super-admin hierarchy with JWT auth, Recharts analytics, accommodation allotment and printable entry cards.", stack: ["Next.js 14", "TypeScript", "Laravel 12", "AWS EC2/S3", "JWT"], icon: "🏟️", url: "https://pnp.jharkhandcclsports.in", accentColor: "#7c3aed", badge: null },
+  { name: "Sports  Booking Platform", desc: "Full-stack multi-role sports  booking platform. Player → Sub-admin → Super-admin hierarchy with JWT auth, Recharts analytics, accommodation allotment and printable entry cards.", stack: ["Next.js 14", "TypeScript", "Laravel 12", "AWS EC2/S3", "JWT"], icon: "🏟️", url: "https://pnp.jharkhandcclsports.in", accentColor: "#7c3aed", badge: null },
   { name: "AI Image Generator", desc: "AI-powered image generation tool. Enter a text prompt and watch it create stunning images using generative AI in seconds. Live and fully interactive — try it now!", stack: ["OpenAI API", "React.js", "Node.js", "Vercel"], icon: "🎨", url: "https://ai-image-generator-red-one.vercel.app/", accentColor: "#f59e0b", badge: "Live Demo" },
   { name: "SmartDocs – RAG Document Q&A", desc: "RAG-based Document Q&A system using Amazon Bedrock (Titan Embeddings V2 + Text Premier), OpenSearch Serverless, S3, and MySQL. Ask questions on any uploaded document instantly.", stack: ["Laravel 12", "Next.js 14", "Amazon Bedrock", "OpenSearch", "S3"], icon: "🤖", url: null, accentColor: "#10b981", badge: "In Progress" },
   { name: "IIT ISM Campus MIS", desc: "Suite of campus-wide academic modules: Scholarship Management, Training & Placement REST APIs, and Student Grade Sheet System with automated PDF generation and multi-role access pipelines.", stack: ["React.js", "Laravel", "CodeIgniter", "MySQL"], icon: "🎓", url: null, accentColor: "#e879f9", badge: null },
@@ -147,7 +198,26 @@ function useTilt() {
 // ─── LOGO (using image.png) ──────────────────────────────────
 function VGLogo({ size = 40, accent, secondary }) {
   return (
-    <img src="/image.png" alt="Logo" style={{ display: "block", width: size, height: "auto", objectFit: "contain", filter: `drop-shadow(0 0 8px ${accent}88)` }} />
+    <div
+      role="img"
+      aria-label="Vikash Goswami Logo"
+      style={{
+        display: "inline-block",
+        width: size,
+        height: size,
+        flexShrink: 0,
+        background: `linear-gradient(135deg, ${accent}, ${secondary})`,
+        WebkitMaskImage: "url(/image.png)",
+        WebkitMaskSize: "contain",
+        WebkitMaskRepeat: "no-repeat",
+        WebkitMaskPosition: "center",
+        maskImage: "url(/image.png)",
+        maskSize: "contain",
+        maskRepeat: "no-repeat",
+        maskPosition: "center",
+        filter: `drop-shadow(0 0 10px ${accent}66)`,
+      }}
+    />
   );
 }
 
@@ -156,6 +226,14 @@ function DateTimeWeather({ t }) {
   const [now, setNow] = useState(new Date());
   const [wx, setWx] = useState(null);
   const [aqi, setAqi] = useState(null);
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    const fn = () => setHidden(window.scrollY > 40);
+    fn();
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
 
   useEffect(() => {
     const id = setInterval(() => setNow(new Date()), 1000);
@@ -207,9 +285,12 @@ function DateTimeWeather({ t }) {
       position: "fixed", top: "72px", left: 0, right: 0, zIndex: 90,
       display: "flex", justifyContent: "space-between", alignItems: "flex-start",
       padding: "0 clamp(10px,3vw,36px)", pointerEvents: "none",
+      opacity: hidden ? 0 : 1,
+      transform: hidden ? "translateY(-16px)" : "translateY(0)",
+      transition: "opacity 0.25s ease, transform 0.25s ease",
     }}>
       {/* Date & Time */}
-      <div style={{ ...panel, pointerEvents: "auto" }}>
+      <div style={{ ...panel, pointerEvents: hidden ? "none" : "auto" }}>
         <div style={{ fontWeight: 700, color: t.text, fontSize: "13px" }}>
           {DAYS[now.getDay()]}, {now.getDate()} {MONS[now.getMonth()]} {now.getFullYear()}
         </div>
@@ -220,7 +301,7 @@ function DateTimeWeather({ t }) {
       </div>
 
       {/* Weather & AQI */}
-      <div style={{ ...panel, pointerEvents: "auto", textAlign: "right" }}>
+      <div style={{ ...panel, pointerEvents: hidden ? "none" : "auto", textAlign: "right" }}>
         {wx ? (
           <>
             <div style={{ fontWeight: 700, color: t.text, fontSize: "15px" }}>🌡️ {wx.temp}°C</div>
@@ -417,14 +498,78 @@ function Toast({ message, type = "error", onClose }) {
   );
 }
 
-// ─── SECTION ──────────────────────────────────────────────────────────────────
+// ─── SECTION (FULL-PAGE STICKY SCROLL-STACK) ──────────────────────────────────
+const SECTION_Z = {
+  hero: 1,
+  about: 2,
+  skills: 3,
+  experience: 4,
+  projects: 5,
+  certifications: 6,
+  contact: 7,
+};
+
+function useStickyStack(ref) {
+  const [state, setState] = useState({ top: 0, cover: 0 });
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let raf = 0;
+    const calc = () => {
+      const vh = window.innerHeight || 1;
+      const h = el.offsetHeight;
+      const top = h > vh ? vh - h : 0;
+      const nextEl = el.nextElementSibling;
+      let cover = 0;
+      if (nextEl) {
+        const nextRect = nextEl.getBoundingClientRect();
+        cover = Math.min(1, Math.max(0, 1 - nextRect.top / vh));
+      }
+      setState((prev) =>
+        prev.top === top && Math.abs(prev.cover - cover) < 0.005 ? prev : { top, cover }
+      );
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(calc);
+    };
+    calc();
+    const ro = new ResizeObserver(calc);
+    ro.observe(el);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [ref]);
+  return state;
+}
+
 function Section({ id, children, t, style = {} }) {
-  const [ref, inView] = useInView(0.07);
+  const ref = useRef(null);
+  const { top, cover } = useStickyStack(ref);
+  const zIndex = SECTION_Z[id] || 2;
+  const isEven = zIndex % 2 === 0;
   return (
     <section id={id} ref={ref} style={{
-      position: "relative", zIndex: 1, padding: "100px 0",
-      opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(52px)",
-      transition: "opacity 0.85s cubic-bezier(0.22,1,0.36,1),transform 0.85s cubic-bezier(0.22,1,0.36,1)",
+      position: "sticky",
+      top: `${top}px`,
+      zIndex,
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      padding: "96px 0",
+      background: isEven ? t.bgSecondary : t.bg,
+      borderTop: `1px solid ${t.border}`,
+      scrollMarginTop: "64px",
+      transform: `scale(${1 - cover * 0.055})`,
+      transformOrigin: "center top",
+      filter: `brightness(${1 - cover * 0.28})`,
+      transition: "transform 0.08s linear, filter 0.08s linear",
       ...style,
     }}>{children}</section>
   );
@@ -468,18 +613,29 @@ function CodeTag({ text, style, t }) {
 }
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
+function scrollToSection(id) {
+  const el = document.getElementById(id.toLowerCase());
+  if (!el || !el.parentElement) return;
+  let top = 0;
+  for (const child of el.parentElement.children) {
+    if (child === el) break;
+    top += child.offsetHeight;
+  }
+  window.scrollTo({ top, behavior: "smooth" });
+}
+
 function Nav({ t, themeKey, setThemeKey, activeSection }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   useEffect(() => { const fn = () => setScrolled(window.scrollY > 40); window.addEventListener("scroll", fn); return () => window.removeEventListener("scroll", fn);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const scrollTo = (id) => { document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" }); setMobileOpen(false); };
+  const scrollTo = (id) => { scrollToSection(id); setMobileOpen(false); };
 
   // KEY FIX: use plain color + backgroundImage separately so switching theme resets WebkitTextFillColor
   const brandStyle = {
-    fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: "17px",
-    letterSpacing: "0.02em",
+    fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: "16px",
+    letterSpacing: "0.08em", textTransform: "uppercase",
     // Solid fallback always set
     color: t.accent,
     // Gradient clip
@@ -552,6 +708,8 @@ function Nav({ t, themeKey, setThemeKey, activeSection }) {
 // ─── HERO ─────────────────────────────────────────────────────────────────────
 function Hero({ t }) {
   const [typed, setTyped] = useState("");
+  const heroRef = useRef(null);
+  const { top: heroStickyTop, cover: heroCover } = useStickyStack(heroRef);
   const roles = ["Full Stack Developer", "Laravel Expert", "Next.js Engineer", "AWS Builder", "AI Explorer"];
   const rIdx = useRef(0), cIdx = useRef(0), del = useRef(false), tmr = useRef(null);
   useEffect(() => {
@@ -577,10 +735,14 @@ function Hero({ t }) {
   });
 
   return (
-    <section id="hero" style={{
+    <section id="hero" ref={heroRef} style={{
       minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center",
-      position: "relative", zIndex: 1, padding: "80px clamp(16px,4vw,48px) 60px",
+      position: "sticky", top: `${heroStickyTop}px`, zIndex: 1, padding: "80px clamp(16px,4vw,48px) 60px",
       background: t.gradHero, overflow: "hidden",
+      transform: `scale(${1 - heroCover * 0.055})`,
+      transformOrigin: "center top",
+      filter: `brightness(${1 - heroCover * 0.28})`,
+      transition: "transform 0.08s linear, filter 0.08s linear",
     }}>
       <div style={{ position: "absolute", top: "-10%", right: "-5%", width: "500px", height: "500px", borderRadius: "50%", background: `radial-gradient(circle,${t.accent}10 0%,transparent 70%)`, pointerEvents: "none" }} />
       <div style={{ position: "absolute", bottom: "-15%", left: "-8%", width: "600px", height: "600px", borderRadius: "50%", background: `radial-gradient(circle,${t.accentSecondary}08 0%,transparent 70%)`, pointerEvents: "none" }} />
@@ -601,10 +763,10 @@ function Hero({ t }) {
           Available for immediate joining · No notice period
         </div>
 
-        <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(38px,7vw,80px)", fontWeight: 700, margin: "0 0 16px", color: t.text, lineHeight: 1.1 }}>
+        <h1 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "clamp(34px,6.2vw,72px)", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", margin: "0 0 16px", color: t.text, lineHeight: 1.15 }}>
           Vikash{" "}
           {/* KEY FIX: wrapping span with key forces re-mount on theme switch → clears stale gradient state */}
-          <span key={t.accent} style={gradText("inherit")}>Goswami</span>
+          <span key={t.accent} style={gradText("inherit", { fontFamily: "'Montserrat',sans-serif", fontWeight: 700 })}>Goswami</span>
         </h1>
 
         <div style={{ height: "52px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "clamp(18px,3vw,28px)", fontWeight: 500, color: t.textMuted, fontFamily: "'Space Grotesk',sans-serif", marginBottom: "24px" }}>
@@ -614,12 +776,12 @@ function Hero({ t }) {
         </div>
 
         <p style={{ fontSize: "clamp(15px,2vw,18px)", color: t.textMuted, maxWidth: "680px", margin: "0 auto 40px", lineHeight: 1.85 }}>
-          4.5+ years building scalable, production-grade systems for government & institutional clients.
-          Independently architected & shipped three live state-level platforms.
+          4.5+ years building scalable, production-grade systems for government, institutional, and AI-powered platforms.
+          Independently architected & shipped three live state-level platforms and full-stack AI applications.
         </p>
 
         <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
-          {[{ label: "View Projects", primary: true, id: "projects" }, { label: "Contact Me", primary: false, id: "contact" }, { label: "Download Resume", primary: false, href: "/resume.pdf", download: true }].map(({ label, primary, id, href, download }) => {
+          {[{ label: "View Projects", primary: true, id: "projects" }, { label: "Contact Me", primary: false, id: "contact" }, { label: "Download Resume", primary: false, href: "/Vikash_Goswami_Resume.pdf", download: "Vikash_Goswami_Resume.pdf" }].map(({ label, primary, id, href, download }) => {
             const commonProps = {
               key: label,
               style: {
@@ -635,7 +797,7 @@ function Hero({ t }) {
             if (href) {
               return <a {...commonProps} href={href} download={download}>{label}</a>;
             }
-            return <button {...commonProps} onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })}>{label}</button>;
+            return <button {...commonProps} onClick={() => scrollToSection(id)}>{label}</button>;
           })}
         </div>
 
@@ -670,7 +832,7 @@ function About({ t }) {
               I'm a Full Stack Developer from <strong style={{ color: t.text }}>Dhanbad, Jharkhand</strong>, with 4.5+ years building scalable, production-grade systems for government & institutional clients across India.
             </p>
             <p style={{ fontSize: "clamp(15px,1.8vw,17px)", color: t.textMuted, lineHeight: 1.9, marginBottom: "32px" }}>
-              I independently architected two flagship state-level platforms — a <strong style={{ color: t.accent }}>paramedical registration system</strong> and a <strong style={{ color: t.accentSecondary }}>sports venue booking platform</strong> — from scratch to production deployment.
+              I independently architected two flagship state-level platforms — a <strong style={{ color: t.accent }}>paramedical registration system</strong> and a <strong style={{ color: t.accentSecondary }}>sports  booking platform</strong> — from scratch to production deployment.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", marginBottom: "28px" }}>
               {[{ icon: "📍", text: "Dhanbad, Jharkhand, India" }, { icon: "💼", text: "Open to Remote Roles" }, { icon: "⚡", text: "Immediate Joiner" }, { icon: "🌐", text: "English & Hindi" }].map(({ icon, text }) => (
@@ -678,7 +840,7 @@ function About({ t }) {
               ))}
             </div>
             <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-              {[{ label: "LinkedIn", href: "https://linkedin.com/in/vikash-goswami", primary: true }, { label: "GitHub", href: "https://github.com/VikashGoswami", primary: false }, { label: "Download Resume", href: "/resume.pdf", primary: false, download: true }].map(({ label, href, primary, download }) => (
+              {[{ label: "LinkedIn", href: "https://linkedin.com/in/vikash-goswami", primary: true }, { label: "GitHub", href: "https://github.com/VikashGoswami", primary: false }, { label: "Download Resume", href: "/Vikash_Goswami_Resume.pdf", primary: false, download: "Vikash_Goswami_Resume.pdf" }].map(({ label, href, primary, download }) => (
                 <a key={label} href={href} target={download ? undefined : "_blank"} rel={download ? undefined : "noreferrer"} download={download} style={{
                   padding: "10px 22px", borderRadius: "10px", fontSize: "14px", fontWeight: 600, textDecoration: "none", transition: "transform 0.2s",
                   background: primary ? `linear-gradient(135deg,${t.accent},${t.accentSecondary})` : "transparent",
@@ -747,12 +909,30 @@ function SkillCategory({ cat, skills, idx, active, setActive, t }) {
           </div>
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "7px" }}>
-          {skills.map(s => (
-            <span key={s} style={{ padding: "5px 12px", borderRadius: "6px", fontSize: "12px", background: t.tagBg, border: `1px solid ${t.border}`, color: t.text, transition: "all 0.2s" }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = t.accent; e.currentTarget.style.color = t.accent; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = t.border; e.currentTarget.style.color = t.text; }}
-            >{s}</span>
-          ))}
+          {skills.map(s => {
+            const logo = SKILL_LOGOS[s];
+            const isDark = t.bg === THEMES.dark.bg;
+            return (
+              <span key={s} style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "5px 11px", borderRadius: "6px", fontSize: "12px", background: t.tagBg, border: `1px solid ${t.border}`, color: t.text, transition: "all 0.2s" }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = t.accent; e.currentTarget.style.color = t.accent; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = t.border; e.currentTarget.style.color = t.text; }}
+              >
+                {logo?.src ? (
+                  <img
+                    src={logo.src}
+                    alt={s}
+                    width={15}
+                    height={15}
+                    onError={(e) => { e.currentTarget.style.display = "none"; }}
+                    style={{ width: "15px", height: "15px", objectFit: "contain", flexShrink: 0, filter: logo.darkInvert && isDark ? "invert(1) brightness(1.1)" : "none" }}
+                  />
+                ) : logo?.emoji ? (
+                  <span style={{ fontSize: "13px", lineHeight: 1 }}>{logo.emoji}</span>
+                ) : null}
+                {s}
+              </span>
+            );
+          })}
         </div>
       </div>
     </div>
@@ -765,7 +945,7 @@ function Skills({ t }) {
     <Section id="skills" t={t}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(16px,4vw,48px)" }}>
         <div style={{ textAlign: "center", marginBottom: "-20px", position: "relative", zIndex: 2 }}>
-          <img src="/image.png" alt="Technical Skills Logo" style={{ height: "80px", objectFit: "contain", filter: `drop-shadow(0 0 12px ${t.accent}88)` }} />
+          <VGLogo size={80} accent={t.accent} secondary={t.accentSecondary} />
         </div>
         <SectionTitle label="// tech_stack.json" title="Technical Skills" t={t} />
         <CodeTag text="{ skills: 'crafted with precision' }" style={{ top: "-20px", right: "4%" }} t={t} />
@@ -835,19 +1015,23 @@ function Experience({ t }) {
   );
 }
 
-// ─── PROJECTS ─────────────────────────────────────────────────────────────────
+// ─── PROJECTS (3x3 VERTICAL CARD GRID) ───────────────────────────────────────
 function ProjectItem({ proj, idx, t }) {
   const [ref, inView] = useInView(0.1);
   const tilt = useTilt();
   return (
-    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0) scale(1)" : "translateY(32px) scale(0.97)", transition: `all 0.7s cubic-bezier(0.22,1,0.36,1) ${idx * 0.1}s` }}>
+    <div ref={ref} style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0) scale(1)" : "translateY(32px) scale(0.97)", transition: `all 0.7s cubic-bezier(0.22,1,0.36,1) ${idx * 0.08}s`, height: "100%" }}>
       <div ref={tilt.ref} onMouseMove={tilt.onMouseMove}
         style={{ background: t.bgCard, border: `1px solid ${t.border}`, borderRadius: "20px", overflow: "hidden", backdropFilter: "blur(14px)", transition: "transform 0.15s ease,border-color 0.3s,box-shadow 0.3s", display: "flex", flexDirection: "column", height: "100%" }}
         onMouseEnter={(e) => { e.currentTarget.style.borderColor = proj.accentColor; e.currentTarget.style.boxShadow = `0 0 32px ${proj.accentColor}30`; }}
         onMouseLeave={(e) => { tilt.onMouseLeave(e); e.currentTarget.style.borderColor = t.border; e.currentTarget.style.boxShadow = "none"; }}
       >
         <div style={{ padding: "28px 24px 20px", background: `linear-gradient(135deg,${proj.accentColor}18,transparent)`, borderBottom: `1px solid ${t.border}`, position: "relative" }}>
-          <div style={{ fontSize: "40px", marginBottom: "12px", lineHeight: 1 }}>{proj.icon}</div>
+          {proj.logo ? (
+            <img src={proj.logo} alt={proj.name} style={{ height: "40px", width: "auto", maxWidth: "65%", objectFit: "contain", display: "block", marginBottom: "12px", borderRadius: "6px", background: "#fff", padding: "3px 8px" }} />
+          ) : (
+            <div style={{ fontSize: "40px", marginBottom: "12px", lineHeight: 1 }}>{proj.icon}</div>
+          )}
           <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "16px", fontWeight: 700, color: t.text, margin: 0 }}>{proj.name}</h3>
           {proj.badge && <span style={{ position: "absolute", top: "14px", right: "14px", padding: "4px 10px", borderRadius: "6px", fontSize: "11px", background: `${proj.accentColor}22`, border: `1px solid ${proj.accentColor}55`, color: proj.accentColor, fontWeight: 700 }}>{proj.badge}</span>}
         </div>
@@ -862,7 +1046,7 @@ function ProjectItem({ proj, idx, t }) {
               onMouseLeave={(e) => { e.currentTarget.style.gap = "6px"; e.currentTarget.style.transform = "translateY(0)"; }}
             >{proj.badge === "Live Demo" ? "🎨 Try it Live" : "View Live"} →</a>
           ) : (
-            <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "9px 18px", borderRadius: "8px", fontSize: "13px", fontWeight: 600, background: t.tagBg, border: `1px solid ${t.border}`, color: t.textDim, width: "fit-content" }}>🔒 Private / In Progress</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "9px 18px", borderRadius: "8px", fontSize: "13px", fontWeight: 600, background: t.tagBg, border: `1px solid ${t.border}`, color: t.textDim, width: "fit-content" }}>{proj.badge?.includes("Completed") ? "✅ Completed" : "🔒 Private / In Progress"}</span>
           )}
         </div>
       </div>
@@ -876,7 +1060,7 @@ function Projects({ t }) {
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(16px,4vw,48px)" }}>
         <SectionTitle label="// projects.config.js" title="Featured Projects" t={t} />
         <CodeTag text="export const projects = [" style={{ top: "-20px", right: "4%" }} t={t} />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: "24px" }}>
+        <div className="projects-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "24px" }}>
           {PROJECTS.map((proj, idx) => (
             <ProjectItem key={proj.name} proj={proj} idx={idx} t={t} />
           ))}
@@ -996,7 +1180,7 @@ function Contact({ t }) {
             </p>
             {[
               { icon: "📧", label: "Email", value: "vgoswami492@gmail.com", href: "mailto:vgoswami492@gmail.com" },
-              { icon: "📱", label: "Phone", value: "+91 80922 13051", href: "tel:+918092213051" },
+              { icon: "📱", label: "Phone", value: "+91 79790 40859", href: "tel:+917979040859" },
               { icon: "📍", label: "Location", value: "Dhanbad, Jharkhand, India", href: null },
               { icon: "💼", label: "LinkedIn", value: "linkedin.com/in/vikash-goswami", href: "https://linkedin.com/in/vikash-goswami" },
               { icon: "🐙", label: "GitHub", value: "github.com/VikashGoswami", href: "https://github.com/VikashGoswami" },
@@ -1078,12 +1262,12 @@ function Contact({ t }) {
 // ─── FOOTER ───────────────────────────────────────────────────────────────────
 function Footer({ t }) {
   return (
-    <footer style={{ position: "relative", zIndex: 1, padding: "40px 24px", borderTop: `1px solid ${t.border}` }}>
+    <footer style={{ position: "relative", zIndex: 8, background: t.bg, padding: "40px 24px", borderTop: `1px solid ${t.border}` }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", textAlign: "center" }}>
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
           <VGLogo size={24} accent={t.accent} secondary={t.accentSecondary} />
           {/* KEY FIX: solid color only in footer, no clip */}
-          <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: "16px", color: t.accent }}>Vikash Goswami</span>
+          <span style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: "15px", letterSpacing: "0.08em", textTransform: "uppercase", color: t.accent }}>Vikash Goswami</span>
         </div>
         <div style={{ color: t.textDim, fontSize: "13px" }}>
           Crafted with ❤️ using React · © {new Date().getFullYear()} Vikash Goswami · All rights reserved.
@@ -1123,13 +1307,21 @@ export default function App() {
 
   useEffect(() => {
     const ids = ["hero", "about", "skills", "experience", "projects", "certifications", "contact"];
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) setActiveSection(e.target.id); }),
-      { threshold: 0.3 }
-    );
-    ids.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
-    return () => obs.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const onScroll = () => {
+      const y = window.scrollY + 140;
+      const main = document.querySelector("main");
+      if (!main) return;
+      let acc = 0;
+      let current = "hero";
+      for (const child of main.children) {
+        if (y >= acc && ids.includes(child.id)) current = child.id;
+        acc += child.offsetHeight;
+      }
+      setActiveSection(current);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
@@ -1149,11 +1341,15 @@ export default function App() {
         @keyframes toastIn{from{opacity:0;transform:translate(-50%,24px)}to{opacity:1;transform:translate(-50%,0)}}
         @keyframes fadeIn{from{opacity:0}to{opacity:1}}
         @keyframes popIn{from{opacity:0;transform:scale(0.82)}to{opacity:1;transform:scale(1)}}
+        @media(max-width:1024px){
+          .projects-grid-3{grid-template-columns:repeat(2,1fr)!important;}
+        }
         @media(max-width:768px){
           .nav-links{display:none!important;}
           .hamburger{display:block!important;}
           .about-grid{grid-template-columns:1fr!important;}
           .contact-grid{grid-template-columns:1fr!important;}
+          .projects-grid-3{grid-template-columns:1fr!important;}
         }
       `}</style>
 
